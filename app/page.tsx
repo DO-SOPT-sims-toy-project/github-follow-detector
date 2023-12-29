@@ -1,11 +1,11 @@
-import styles from './page.module.css';
+import Login from './_components/login';
 
-export default function Home() {
+const Home = () => {
   return (
-    <main className={styles.main}>
-      <div>
-        <h1>Hello</h1>
-      </div>
+    <main>
+      <Login />
     </main>
   );
-}
+};
+
+export default Home;

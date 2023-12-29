@@ -2,6 +2,7 @@
   "extends": ["prettier", "eslint:recommended", "next/core-web-vitals", "eslint-config-next"],
   "rules": {
     // 'React' must be in scope when using JSX 에러 해결 (Next.js)
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
   }
 }
