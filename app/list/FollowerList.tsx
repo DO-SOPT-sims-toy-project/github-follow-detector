@@ -1,6 +1,6 @@
 import * as S from './style';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, useId, useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import useGetCoFollower from '@/_hooks/useCoFollower';
@@ -73,6 +73,8 @@ interface IFollowerDataTypesProps {
 
 /** follower 목록 보여주는 부분 */
 const FollowerData = ({ list, selectedUser, selectUsersHandler }: IFollowerDataTypesProps) => {
+  const uniqueId = useId();
+
   const selectUserHandler = (e: FormEvent<HTMLInputElement>) => {
     const userId = Number((e.target as HTMLInputElement).value);
 
@@ -87,7 +89,7 @@ const FollowerData = ({ list, selectedUser, selectUsersHandler }: IFollowerDataT
             <Image css={userImage} src={avatar_url} alt="user-profile-img" width={50} height={50} priority />
             <span>{login}</span>
             <S.InputCheckBox
-              id={`${login}`}
+              id={uniqueId}
               type="checkbox"
               value={id}
               checked={selectedUser.includes(id)}
