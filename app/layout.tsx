@@ -1,7 +1,7 @@
 'use client';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import GlobalStyle from './_styles/Global';
 import { Inter } from 'next/font/google';

@@ -1,6 +1,7 @@
 import * as S from './style';
 
-import { FormEvent, useId, useState } from 'react';
+import { useId, useState } from 'react';
+import type { FormEvent } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import useGetCoFollower from '@/_hooks/useCoFollower';

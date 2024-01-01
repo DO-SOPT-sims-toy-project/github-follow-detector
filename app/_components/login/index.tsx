@@ -1,13 +1,11 @@
 'use client';
 
-import * as S from './style';
-
-import { useRouter } from 'next/navigation';
-
-import Button from '../common/Button';
-import { FormEvent } from 'react';
-import { css } from '@emotion/react';
+import type { FormEvent } from 'react';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { css } from '@emotion/react';
+import Button from '../common/Button';
+import * as S from './style';
 
 /** GitHub Token 만들러 가기 버튼 */
 const MakeGitHubToken = () => {

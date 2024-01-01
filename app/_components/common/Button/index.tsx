@@ -1,6 +1,6 @@
 import * as S from './style';
 
-import { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 
 interface ButtonPropsTypes {
   isActive?: boolean;
