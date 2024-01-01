@@ -1,5 +1,3 @@
-/** @jsxImportSource @emotion/react */
-
 import * as S from './style';
 
 import { FormEvent, useState } from 'react';
