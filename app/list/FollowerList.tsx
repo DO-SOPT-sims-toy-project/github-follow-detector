@@ -3,9 +3,9 @@ import * as S from './style';
 import { useId, useState } from 'react';
 import type { FormEvent } from 'react';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 import { css } from '@emotion/react';
 import useGetCoFollower from '@/_hooks/useCoFollower';
-import { useSearchParams } from 'next/navigation';
 import Button from '@/_components/common/Button';
 import { flexBetween, flexColumn, flexStart } from '@/_styles/reusableStyle';
 
@@ -13,16 +13,7 @@ interface ISelectedRadioTypesProps {
   isNoAll: boolean;
   listLength: number;
   selectedUser: number[];
-  /**
-   * _allSelected 앞에 __를 붙인 이유:
-   * allSelected 라고 했더니
-   * allSelected is defined but never used
-   * 라는 에러가 떠서
-   * eslint.json에
-   * "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }] 추가한 뒤
-   * _allSelected로 변경함
-   */
-  selectAllUsersHandler: (_allSelected: boolean) => void;
+  selectAllUsersHandler: (allSelected: boolean) => void;
 }
 interface UserInfo {
   id: number;
@@ -69,7 +60,7 @@ type ListTypes = {
 interface IFollowerDataTypesProps {
   list: ListTypes[];
   selectedUser: number[];
-  selectUsersHandler: (_isAdded: boolean, _userId: number) => void;
+  selectUsersHandler: (isAdded: boolean, userId: number) => void;
 }
 
 /** follower 목록 보여주는 부분 */

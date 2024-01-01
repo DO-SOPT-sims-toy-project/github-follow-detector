@@ -30,7 +30,7 @@ const UserInfo = () => {
 type ListType = 'coFollowList' | 'nonFollowList';
 interface ListTypeInterfaces {
   isActiveState: string;
-  isActiveHandler: (_str: string) => void;
+  isActiveHandler: (str: string) => void;
   setListType: Dispatch<SetStateAction<ListType>>;
 }
 /** 맞팔 아닌 사람 / 맞팔 확인하기 / 뒤로 가기 버튼 부분 */
