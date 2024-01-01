@@ -13,7 +13,7 @@ interface ISelectedRadioTypesProps {
   isNoAll: boolean;
   listLength: number;
   selectedUser: number[];
-  selectAllUsersHandler: (allSelected: boolean) => void;
+  onSelectAllUsers: (allSelected: boolean) => void;
 }
 interface UserInfo {
   id: number;
@@ -22,7 +22,7 @@ interface UserInfo {
 }
 
 /** 모두 선택 / 모두 해지 선택하는 radio 부분 */
-const SelectRadio = ({ isNoAll, listLength, selectedUser, selectAllUsersHandler }: ISelectedRadioTypesProps) => {
+const SelectRadio = ({ isNoAll, listLength, selectedUser, onSelectAllUsers }: ISelectedRadioTypesProps) => {
   const selectedUserLength = selectedUser.length;
   const allSelected = selectedUserLength === listLength;
 
@@ -36,7 +36,7 @@ const SelectRadio = ({ isNoAll, listLength, selectedUser, selectAllUsersHandler 
       <S.SelectAllButton
         type="button"
         onClick={() => {
-          selectAllUsersHandler(allSelected);
+          onSelectAllUsers(allSelected);
         }}
       >
         {allSelected ? '모두 해제' : '모두 선택'}
@@ -60,17 +60,17 @@ type ListTypes = {
 interface IFollowerDataTypesProps {
   list: ListTypes[];
   selectedUser: number[];
-  selectUsersHandler: (isAdded: boolean, userId: number) => void;
+  onSelectUsers: (isAdded: boolean, userId: number) => void;
 }
 
 /** follower 목록 보여주는 부분 */
-const FollowerData = ({ list, selectedUser, selectUsersHandler }: IFollowerDataTypesProps) => {
+const FollowerData = ({ list, selectedUser, onSelectUsers }: IFollowerDataTypesProps) => {
   const uniqueId = useId();
 
   const selectUserHandler = (e: FormEvent<HTMLInputElement>) => {
     const userId = Number((e.target as HTMLInputElement).value);
 
-    return selectUsersHandler(selectedUser.includes(userId), userId);
+    return onSelectUsers(selectedUser.includes(userId), userId);
   };
 
   return (
@@ -106,7 +106,7 @@ const FollowerList = ({ isNoAll, listType }: FollowListPropTypes) => {
   const listLength = list?.length;
 
   /** 전체 선택 / 전체 해제 */
-  const selectAllUsersHandler = (allSelected: boolean) => {
+  const onSelectAllUsers = (allSelected: boolean) => {
     allSelected ? setSelectedUsers([]) : setSelectedUsers(list.map(({ id }: { id: number }) => id));
   };
 
@@ -123,9 +123,9 @@ const FollowerList = ({ isNoAll, listType }: FollowListPropTypes) => {
           isNoAll={isNoAll}
           listLength={listLength}
           selectedUser={selectedUser}
-          selectAllUsersHandler={selectAllUsersHandler}
+          onSelectAllUsers={onSelectAllUsers}
         />
-        <FollowerData list={list} selectedUser={selectedUser} selectUsersHandler={selectUserHandler} />
+        <FollowerData list={list} selectedUser={selectedUser} onSelectUsers={selectUserHandler} />
       </form>
     </S.ListContainer>
   );
