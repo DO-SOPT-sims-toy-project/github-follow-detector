@@ -25,12 +25,12 @@ const useGetCoFollower = (pat: string, username: string, type: string) => {
   //나를 팔로우하는 사람
   const followerList = useQuery({
     queryKey: ['followerList'],
-    queryFn: async () => await getFollower(pat, username),
+    queryFn: () => getFollower(pat, username),
   });
 
   const followingList = useQuery({
     queryKey: ['followingList'],
-    queryFn: async () => await getFollowing(pat, username),
+    queryFn: () => getFollowing(pat, username),
   });
 
   const follwerInfoList = followerList?.data?.map((follower: UserInfo) => {
