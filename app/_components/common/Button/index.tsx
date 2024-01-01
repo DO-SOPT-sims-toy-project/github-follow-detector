@@ -1,17 +1,14 @@
 import * as S from './style';
 
-import type { PropsWithChildren } from 'react';
+import type { ComponentProps } from 'react';
 
-interface ButtonPropsTypes {
+interface ButtonProps extends ComponentProps<'button'> {
   isActive?: boolean;
-  type?: 'button' | 'submit' | 'reset' | undefined;
-  disabled?: boolean;
-  onClick?: () => void;
 }
 
-const Button = ({ children, isActive, disabled, onClick, type = 'button' }: PropsWithChildren<ButtonPropsTypes>) => {
+const Button = ({ children, isActive = false, ...props }: ButtonProps) => {
   return (
-    <S.CommonButton $isActive={isActive} type={type} disabled={disabled} onClick={onClick}>
+    <S.CommonButton $isActive={isActive} {...props}>
       {children}
     </S.CommonButton>
   );
